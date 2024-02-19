@@ -285,7 +285,7 @@ model.to(device)
 scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
 
 # optimizer
-optimizer = Lilith(model.parameters, lr, eps, beta1_m, beta2_m, beta_v, weight_decay, m_norm_min, ratio_min, lookahead_k, lookahead_beta)
+optimizer = Lilith()
 if init_from == 'resume':
     optimizer.load_state_dict(checkpoint['optimizer'])
 checkpoint = None # free up memory
