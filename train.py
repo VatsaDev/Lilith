@@ -369,7 +369,7 @@ def get_lr_step811(it):
         return min_lr+(it/200)*lr
     # 1) gradual lr decay by step till 30%
     if (it >= 200) and (it < max_iters*0.8):
-        return lr-(it/(max_iters*0.8))*0.7
+        return lr-(it/(max_iters*0.8))*lr*0.7
     # 2) between 80% and 90% done
     if (it >= max_iters*0.8) and (it <= max_iters*0.9):
         return lr*0.3
