@@ -1,5 +1,8 @@
 # Lilith
-Using the Lilith optimizer on nanogpt, also adding a TLR scheduler to it
+Using the Lilith optimizer on nanogpt, messing with lr, and multiple schdulers
+
+deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1#:~:text=rate%20of%20the%20model%20reaches%20its%20maximum%20value%20after%202000%20warmup%20steps%2C%20and%20then%20decreases%20to%2031.6%25%20of%20the%20maximum%20value%20after%20processing%2080%25%20of%20the%20training%20tokens.%20It%20further)
+
 
 ## Running tests
  - Test 1, Lilith default params, using cosine LR, AdamW params from Karpathy, cosine LR
@@ -26,4 +29,9 @@ Using the Lilith optimizer on nanogpt, also adding a TLR scheduler to it
 - Test 6, TRL reintroduction(pink), vs sota lilith (blue), and adamW (red), lr 1e-4, didn't go well, TRL is too unstable, will try deepseek stepbased lr later
 
 ![download (10)](https://github.com/VatsaDev/Lilith/assets/71975550/657ef261-6175-4abb-a89f-99012e2ee09d)
+
+- Test 7, using the deepseek based lr, in yellow, lr 1e-4, 20%,40%,40% partitions, didn't do anything, but that just maybe my infamiliarity with the step based version
+
+![download (11)](https://github.com/VatsaDev/Lilith/assets/71975550/35a5a7e8-213e-49a1-953d-46c00f62cc29)
+
 
