@@ -34,4 +34,8 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ![download (11)](https://github.com/VatsaDev/Lilith/assets/71975550/35a5a7e8-213e-49a1-953d-46c00f62cc29)
 
+- Test 8, using the same step partitions in the deepseek paper, teal line, lr 1e-4, 80%,10%,10% partitions, I need to fix it, the lr freaks out and goes to zero, but this optimizer does not seem to like the scheduler whatsoever either, literally no change/drop in all cases
+
+![download (12)](https://github.com/VatsaDev/Lilith/assets/71975550/14a995df-a2ec-4204-a8bd-871d6dc026ed)
+
 
