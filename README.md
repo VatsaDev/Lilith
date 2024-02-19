@@ -1,5 +1,5 @@
 # Lilith
-Using the Lilith optimizer on nanogpt, also adding a TRL scheduler to it
+Using the Lilith optimizer on nanogpt, also adding a TLR scheduler to it
 
 ## Running tests
  - Test 1, Lilith default params, using cosine LR, AdamW params from Karpathy, cosine LR
@@ -17,3 +17,8 @@ Using the Lilith optimizer on nanogpt, also adding a TRL scheduler to it
 - Test 4, current lilith in blue, lr (1e-4), cosine lr
   
 ![download (7)](https://github.com/VatsaDev/Lilith/assets/71975550/13da4412-2ec9-43e0-83ab-f93a26fa9816)
+
+- Test 5, current lilith in green, lr (5e-5), cosine lr, too low, and the model cant seem to get as low as adamw
+- further tests to try and reintroduce TLR, then try a deepseek style stepwise lr
+
+![download (9)](https://github.com/VatsaDev/Lilith/assets/71975550/792014f8-f327-47af-84be-a57b22ed3b1b)
