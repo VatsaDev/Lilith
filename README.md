@@ -22,3 +22,8 @@ Using the Lilith optimizer on nanogpt, also adding a TLR scheduler to it
 - further tests to try and reintroduce TLR, then try a deepseek style stepwise lr
 
 ![download (9)](https://github.com/VatsaDev/Lilith/assets/71975550/792014f8-f327-47af-84be-a57b22ed3b1b)
+
+- Test 6, TRL reintroduction(pink), vs sota lilith (blue), and adamW (red), lr 1e-4, didn't go well, TRL is too unstable, will try deepseek stepbased lr later
+
+![download (10)](https://github.com/VatsaDev/Lilith/assets/71975550/657ef261-6175-4abb-a89f-99012e2ee09d)
+
