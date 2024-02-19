@@ -57,15 +57,7 @@ bias = False # do we use bias inside LayerNorm and Linear layers?
 # LILITH!
 max_iters = 6000 # total number of training iterations
 learning_rate = lr = 6e-4 # max learning rate
-eps = 1e-8,
-beta1_m = 0.9,
-beta2_m = 0.9,
-beta_v = 0.999,
-weight_decay = 0.01,
-m_norm_min = 1e-4,
-ratio_min = 1e-4,
-lookahead_k = 5,
-lookahead_beta = 0.5
+const_lr = 1e-4
 grad_clip = 1.0 # clip gradients at this value, or disable if == 0.0
 # learning rate decay settings
 decay_lr = True # whether to decay the learning rate
@@ -102,7 +94,7 @@ class Lilith(Optimizer):
         g_norm_min: float = 1e-4,
         ratio_min: float = 1e-4,
         acceleration: float = 1,
-        ema_k: int = 0,
+        ema_k: int = 1,
         ema_beta: float = 0.99
     ):
         defaults = dict(
@@ -341,41 +333,32 @@ def get_lr_tlr(it):
     if it >= max_iters/2:
         return lr - ((it-2500)/2500)*lr + min_lr
 
-# learning rate decay scheduler step based lr, 3 stages, two drops, lr decay
-def get_lr_tlr(it):
-    # 1) linear increase
-    if it < max_iters/2:
-        return min_lr + (it/2500)*lr
-    # 2) linear decrease
-    if it >= max_iters/2:
-        return lr - ((it-2500)/2500)*lr + min_lr
-
 # deepseek llm style Multi-step lr changes, in the 20:40:40 ratios
 def get_lr_step244(it):
     # 1) max lr 20% of the way
     if it < int(max_iters*0.2):
-        return lr
+        return const_lr
     # 2) step after 20%
     if (it <= int(max_iters*0.6)) and (it > int(max_iters*0.2)):
-        return lr*0.5
+        return const_lr*0.5
     # 3) step after 60%
     else:
-        return lr*0.1
+        return const_lr*0.1
 
 # actual deepseek Multi-step lr, in the 80:10:10 ratios, with warmup steps
 def get_lr_step811(it):
     # 0) 200 warmup steps, lr rises from min to max
     if it < 200:
-        return min_lr+(it/200)*lr
+        return min_lr+(it/200)*const_lr
     # 1) gradual lr decay by step till 30%
     if (it >= 200) and (it < max_iters*0.8):
-        return lr-(it/(max_iters*0.8))*lr*0.7
+        return const_lr-(it/(max_iters*0.8))*const_lr*0.7
     # 2) between 80% and 90% done
     if (it >= max_iters*0.8) and (it <= max_iters*0.9):
-        return lr*0.3
+        return const_lr*0.3
     # 3) after 90%
     else:
-        return lr*0.1
+        return const_lr*0.1
         
 
 # logging
