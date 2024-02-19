@@ -361,6 +361,21 @@ def get_lr_step244(it):
     # 3) step after 60%
     else:
         return lr*0.1
+
+# actual deepseek Multi-step lr, in the 80:10:10 ratios, with warmup steps
+def get_lr_step811(it):
+    # 0) 200 warmup steps, lr rises from min to max
+    if it < 200:
+        return min_lr+(it/200)*lr
+    # 1) gradual lr decay by step till 30%
+    if (it >= 200) and (it < max_iters*0.8):
+        return lr-(it/(max_iters*0.8))*0.7
+    # 2) between 80% and 90% done
+    if (it >= max_iters*0.8) and (it <= max_iters*0.9):
+        return lr*0.3
+    # 3) after 90%
+    else:
+        return lr*0.1
         
 
 # logging
@@ -383,6 +398,8 @@ while True:
         lr = get_lr_tlr(iter_num) if decay_lr else learning_rate
     if lrType=="step244":
         lr = get_lr_step244(iter_num) if decay_lr else learning_rate
+    if lrType=="step811":
+        lr = get_lr_step811(iter_num) if decay_lr else learning_rate
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
