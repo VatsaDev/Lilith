@@ -341,6 +341,28 @@ def get_lr_tlr(it):
     if it >= max_iters/2:
         return lr - ((it-2500)/2500)*lr + min_lr
 
+# learning rate decay scheduler step based lr, 3 stages, two drops, lr decay
+def get_lr_tlr(it):
+    # 1) linear increase
+    if it < max_iters/2:
+        return min_lr + (it/2500)*lr
+    # 2) linear decrease
+    if it >= max_iters/2:
+        return lr - ((it-2500)/2500)*lr + min_lr
+
+# deepseek llm style Multi-step lr changes, in the 20:40:40 ratios
+def get_lr_step244(it):
+    # 1) max lr 20% of the way
+    if it < int(max_iters*0.2):
+        return lr
+    # 2) step after 20%
+    if (it <= int(max_iters*0.6)) and (it > int(max_iters*0.2)):
+        return lr*0.5
+    # 3) step after 60%
+    else:
+        return lr*0.1
+        
+
 # logging
 if wandb_log and master_process:
     import wandb
@@ -359,6 +381,8 @@ while True:
         lr = get_lr_cos(iter_num) if decay_lr else learning_rate
     if lrType=="tlr":
         lr = get_lr_tlr(iter_num) if decay_lr else learning_rate
+    if lrType=="step244":
+        lr = get_lr_step244(iter_num) if decay_lr else learning_rate
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
