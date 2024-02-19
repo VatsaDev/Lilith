@@ -318,7 +318,7 @@ def estimate_loss():
     return out
 
 # learning rate decay scheduler (cosine with warmup)
-def get_lr(it):
+def get_lr_cos(it):
     # 1) linear warmup for warmup_iters steps
     if it < warmup_iters:
         return learning_rate * it / warmup_iters
@@ -330,6 +330,15 @@ def get_lr(it):
     assert 0 <= decay_ratio <= 1
     coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio)) # coeff ranges 0..1
     return min_lr + coeff * (learning_rate - min_lr)
+
+# learning rate decay scheduler TLR, triangular
+def get_lr_tlr(it):
+    # 1) linear increase
+    if it < max_iter/2:
+        return min_lr + (it/2500)*lr
+    # 2) linear decrease
+    if it > max_iter/2:
+        return lr - ((it-2500)/2500)*lr + min_lr
 
 # logging
 if wandb_log and master_process:
@@ -345,7 +354,7 @@ running_mfu = -1.0
 while True:
 
     # determine and set the learning rate for this iteration
-    lr = get_lr(iter_num) if decay_lr else learning_rate
+    lr = get_lr_tlr(iter_num) if decay_lr else learning_rate
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
