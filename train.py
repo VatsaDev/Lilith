@@ -337,7 +337,7 @@ def get_lr_tlr(it):
     if it < max_iters/2:
         return min_lr + (it/2500)*lr
     # 2) linear decrease
-    if it > max_iters/2:
+    if it >= max_iters/2:
         return lr - ((it-2500)/2500)*lr + min_lr
 
 # logging
