@@ -334,10 +334,10 @@ def get_lr_cos(it):
 # learning rate decay scheduler TLR, triangular
 def get_lr_tlr(it):
     # 1) linear increase
-    if it < max_iter/2:
+    if it < max_iters/2:
         return min_lr + (it/2500)*lr
     # 2) linear decrease
-    if it > max_iter/2:
+    if it > max_iters/2:
         return lr - ((it-2500)/2500)*lr + min_lr
 
 # logging
