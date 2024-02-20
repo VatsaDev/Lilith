@@ -7,6 +7,34 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 ## Running tests
 
 ### New lilith versions
+
+ - Test 15, Trying the deepseek based lr steps once again, 2:4:4 (first graph, lr 1e-4, due to numerical instability) and 8:1:1 (second graph, lr 8e-5), the first step change in 2:4:4 worked, but it flatlined afterwards, some progress on that end, while lr on the deepseek values was much much better, almost cosine
+
+![Screen Shot 2024-02-19 at 7 45 18 PM](https://github.com/VatsaDev/Lilith/assets/71975550/79390d23-bb0f-45a1-b3c5-d4feb44a5a98)
+
+![Screen Shot 2024-02-19 at 7 54 41 PM](https://github.com/VatsaDev/Lilith/assets/71975550/64942049-bc5f-49cf-97b5-c7da307dce2e)
+
+
+
+ - Test 14, set beta 1 and beta 2 to 0.95 and 0.98, slightly worse, and trial of 0.98 and 0.999999 was even worse but good tuning might give a +1% boost,
+
+![Screen Shot 2024-02-19 at 6 55 46 PM](https://github.com/VatsaDev/Lilith/assets/71975550/60af5711-d679-4792-a8af-9b9312520c36)
+
+![Screen Shot 2024-02-19 at 7 16 49 PM](https://github.com/VatsaDev/Lilith/assets/71975550/ac37589f-6530-46fd-a4c7-3c9b12e63560)
+
+
+ - Test 13, lr 8e-5, was initially 5e-5, but it was too low, couldnt affect it very well, 8e-5 appears to be an even better initial sweet spot than 1e-4, tho it starts converging
+
+![download (17)](https://github.com/VatsaDev/Lilith/assets/71975550/f1887d4e-4e06-48ba-a263-3fc94a9cfdfc)
+
+ - Test 12, the same as 9, but just testing batch_size and lowering iters for efficiency, slightly above the sota run, but thats expected from larger batches, trains on 1.2x more tokens than before, for 1/3 the time, lilith is scalable, just like AdamW
+
+![download (16)](https://github.com/VatsaDev/Lilith/assets/71975550/da6afddb-761e-4254-8678-3e713d2df1d1)
+
+
+ - Test 11, changed ema_k from 0 to 1 for better numerical stability, and using cosine lr schedule, lr = 1e-3
+ - Note: There is numerical stability, no Nans, but loss is very volatile, literally unlearning
+
  - Test 10, using Triangular lr schedule, literally doesnt want to work, just like the previous tlr spike, gonna stick with multistep or cosine
 
  ![download (15)](https://github.com/VatsaDev/Lilith/assets/71975550/d1d1f324-a305-4106-80fa-d7a25d587baf)
