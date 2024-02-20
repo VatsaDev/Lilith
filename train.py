@@ -87,8 +87,8 @@ class Lilith(Optimizer):
         params,
         lr: float,
         eps: float = 1e-8,
-        beta1_m: float = 0.95,
-        beta2_m: float = 0.98,
+        beta1_m: float = 0.95, # old 0.9
+        beta2_m: float = 0.98, # old 0.99
         beta_v: float = 0.999,
         weight_decay: float = 0.01,
         g_norm_min: float = 1e-4,
