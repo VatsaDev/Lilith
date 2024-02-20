@@ -8,7 +8,10 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ### New lilith versions
 
- - Test 19, scaling batchsize to 360, appears to be having a similar effect so far
+ - Test 19, scaling batchsize to 360, appears to be having a similar effect so far, but better, explains euclaise's tests, his bs=1024
+
+![Screen Shot 2024-02-20 at 1 33 30 PM](https://github.com/VatsaDev/Lilith/assets/71975550/1423b591-3b86-49f9-a7c0-b909fcc034aa)
+
 
  - Test 18, scaling batchsize to 180 for a try, lr 3e-4, cosine schedule, sota result by a margin, beats adam?! It shows the same behaviour as adamw on large batches, but better? This could be the large scale training optimizer? 
 
