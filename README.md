@@ -8,6 +8,21 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ### New lilith versions
 
+ - Test 19, scaling batchsize to 360, appears to be having a similar effect so far
+
+ - Test 18, scaling batchsize to 180 for a try, lr 3e-4, cosine schedule, sota result by a margin, beats adam?! It shows the same behaviour as adamw on large batches, but better? This could be the large scale training optimizer? 
+
+![Screen Shot 2024-02-20 at 12 11 06 PM](https://github.com/VatsaDev/Lilith/assets/71975550/435e1205-4fe6-4adb-9f23-5f7af661bd3c)
+
+
+ - Test 17, using the deepseek step bases again, first graph 2:4:4, second graph 8:1:1, 8:1:1 is a really successful scheduler, achieved the same val loss as cosine adamw
+
+![Screen Shot 2024-02-20 at 11 18 09 AM](https://github.com/VatsaDev/Lilith/assets/71975550/0bc34e10-4786-4536-b213-324d475e8bca)
+![Screen Shot 2024-02-20 at 11 28 17 AM](https://github.com/VatsaDev/Lilith/assets/71975550/799dc67e-fe4c-4977-816a-0334771a98bc)
+
+
+ - brand new version, due to corruption lost the graphs, but the new good lr is 3e-4, from test 16
+
  - Test 15, Trying the deepseek based lr steps once again, 2:4:4 (first graph, lr 1e-4, due to numerical instability) and 8:1:1 (second graph, lr 8e-5), the first step change in 2:4:4 worked, but it flatlined afterwards, some progress on that end, while lr on the deepseek values was much much better, almost cosine
 
 ![Screen Shot 2024-02-19 at 7 45 18 PM](https://github.com/VatsaDev/Lilith/assets/71975550/79390d23-bb0f-45a1-b3c5-d4feb44a5a98)
