@@ -93,7 +93,7 @@ class Lilith(Optimizer):
         weight_decay: float = 0.01,
         g_norm_min: float = 1e-4,
         ratio_min: float = 1e-4,
-        acceleration: float = 2,
+        acceleration: float = 4,
         ema_k: int = 0.01*max_iters,
         ema_beta: float = 0.99
     ):
