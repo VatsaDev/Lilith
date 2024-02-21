@@ -8,6 +8,13 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ### New lilith versions
 
+ - TODO: Test 21, bs=1024 and bs=2048
+
+ - Test 20, Adam can match lilith at bs=180, testing bs=360 (Yellow and Orange)
+
+![Screen Shot 2024-02-20 at 11 08 44 PM](https://github.com/VatsaDev/Lilith/assets/71975550/d0886d4f-4d73-4004-af2f-a1da99968d4d)
+![Screen Shot 2024-02-20 at 11 43 57 PM](https://github.com/VatsaDev/Lilith/assets/71975550/00b10c66-95f8-43a5-a832-cbe9600391da)
+
  - Test 19, scaling batchsize to 360, appears to be having a similar effect so far, but better, explains euclaise's tests, his bs=1024
 
 ![Screen Shot 2024-02-20 at 1 33 30 PM](https://github.com/VatsaDev/Lilith/assets/71975550/1423b591-3b86-49f9-a7c0-b909fcc034aa)
