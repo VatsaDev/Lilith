@@ -8,9 +8,12 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ### New lilith versions
 
- - TODO: Test 25, deepseek scheduler on acc=2
+ - TODO: Test 25, deepseek scheduler with the changes below
 
- - TODO: Test 24, acc=10
+ - Test 24, graphs for acc=10, acc=50, acc=1000, helps boost training a little bit early on, slightly better curves, slightly lower loss, might just blow up this value for a +1% boost. Here Lilith runs with accelration and a bs of 12 come really close to an AdamW run with bs 180, Lilith train time here was almost 5x faster, 70ms per step vs 300ms per step
+
+![Screen Shot 2024-02-21 at 4 22 53 PM](https://github.com/VatsaDev/Lilith/assets/71975550/a7127298-0407-42e2-8385-8acae0946380)
+
 
  - Test 23, accelration at 4, matches acc=2, and yet these values are looking they match larger bs, this optimizer is fire
 
