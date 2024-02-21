@@ -88,12 +88,12 @@ class Lilith(Optimizer):
         lr: float,
         eps: float = 1e-8,
         beta1_m: float = 0.9,
-        beta2_m: float = 0.99,
+        beta2_m: float = 0.999,
         beta_v: float = 0.999,
         weight_decay: float = 0.01,
         g_norm_min: float = 1e-4,
         ratio_min: float = 1e-4,
-        acceleration: float = 1,
+        acceleration: float = 2,
         ema_k: int = 0.01*max_iters,
         ema_beta: float = 0.99
     ):
