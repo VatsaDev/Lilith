@@ -10,9 +10,9 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
  - TODO: Test 22, match beta1_m to adam beta 1 and beta_v near adams beta 2, also trying accelration set to 2?
 
- - TODO: Test 21, bs=600, My setup cant see batch_sizes of 600+ with ooms
+ Test 21, bs=600, My setup cant see batch_sizes of 600+ with ooms, Lilith is like 10% faster, interstingly, faster and equal or better?!
 
- 
+ ![Screen Shot 2024-02-21 at 10 46 54 AM](https://github.com/VatsaDev/Lilith/assets/71975550/24e49eb4-63e3-4313-8a60-a6c9f4ee2672)
 
  - Test 20, Adam can match lilith at bs=180, testing bs=360 (Yellow and Orange)
 
