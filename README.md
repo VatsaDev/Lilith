@@ -8,7 +8,17 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ### New lilith versions
 
- - TODO: Test 22, match beta1_m to adam beta 1 and beta_v near adams beta 2, also trying accelration set to 2?
+ - TODO: Test 25, deepseek scheduler on acc=2
+
+ - TODO: Test 24, acc=10
+
+ - Test 23, accelration at 4, matches acc=2, and yet these values are looking they match larger bs, this optimizer is fire
+
+![Screen Shot 2024-02-21 at 2 31 37 PM](https://github.com/VatsaDev/Lilith/assets/71975550/efd50a39-eb3c-44f8-b3c4-8779690da14e)
+
+ - Test 22, match beta1_m to adam beta 1 and beta_v near adams beta 2, also trying accelration set to 2, here in the graph we have an overfit AdamW vs Lilith with accelration=2, following the same path with less overfitting
+
+![Screen Shot 2024-02-21 at 2 07 16 PM](https://github.com/VatsaDev/Lilith/assets/71975550/9633cb76-cbf3-4f85-94bd-f85e5813b655)
 
  Test 21, bs=600, My setup cant see batch_sizes of 600+ with ooms, Lilith is like 10% faster, interstingly, faster and equal or better?!
 
