@@ -8,6 +8,10 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
 ### New lilith versions
 
+ - Test 26, setting dropout to low values(~0.01) is beneficial, but linear descent compared to the smooth adam curves
+
+![Screen Shot 2024-02-22 at 12 12 05 PM](https://github.com/VatsaDev/Lilith/assets/71975550/949e7c1a-9491-47ff-a777-66322007e209)
+
  - Test 25, deepseek scheduler 2:4:4 and 8:1:1, at acc 1000, also these runs now finishing in like 1/4 the time is really useful!
 
 ![Screen Shot 2024-02-21 at 5 44 56 PM](https://github.com/VatsaDev/Lilith/assets/71975550/4631836d-ddea-4619-af01-8b6d22576fc4)
