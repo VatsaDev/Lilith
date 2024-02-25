@@ -87,7 +87,7 @@ deepseek step based implementation -> [link](https://arxiv.org/html/2401.02954v1
 
  ![download (15)](https://github.com/VatsaDev/Lilith/assets/71975550/d1d1f324-a305-4106-80fa-d7a25d587baf)
 
- - Test 9, the orange bar being the new lilith, lr=1e-4, cosine scheduler, literally matches transformers for awhile, before flattening earlier, but val losses match, at ~1.47, so maybe its just not as prone to overfit?
+ - Test 9, the orange bar being the new lilith, lr=1e-4, cosine scheduler, literally matches adamW for awhile, before flattening earlier, but val losses match, at ~1.47, so maybe its just not as prone to overfit?
 
 ![download (13)](https://github.com/VatsaDev/Lilith/assets/71975550/5dd47950-cba5-4003-a208-21dd7c17253d)
 
