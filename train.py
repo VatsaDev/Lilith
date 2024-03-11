@@ -89,13 +89,13 @@ class Lilith(Optimizer):
         lr: float,
         eps: float = 1e-8,
         beta1_m: float = 0.9,
-        beta2_m: float = 0.999,
+        beta2_m: float = 0.99,
         beta_v: float = 0.999,
         weight_decay: float = 0.01,
         g_norm_min: float = 1e-4,
         ratio_min: float = 1e-4,
-        acceleration: float = 4,
-        ema_k: int = 0.01*max_iters,
+        acceleration: float = 1,
+        ema_k: int = 0,
         ema_beta: float = 0.99
     ):
         defaults = dict(
@@ -107,7 +107,7 @@ class Lilith(Optimizer):
             weight_decay=weight_decay,
             g_norm_min=g_norm_min,
             ratio_min=ratio_min,
-            acceleration=acc,
+            acceleration=acceleration,
             ema_k = ema_k,
             ema_beta=ema_beta,
         )
